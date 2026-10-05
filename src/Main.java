@@ -1,10 +1,20 @@
 import java.util.Scanner;
 
 /**
- * Programa principal: menú de consola que usa el resto de clases.
+ * Programa principal: menú de consola que usa el resto de clases
+ * ({@link Calculadora}, {@link Cadenas} y {@link Estudiante}).
+ * <p>
+ * El menú se repite hasta que el usuario elige la opción 0 (salir).
+ * </p>
  */
 public class Main {
 
+    /**
+     * Punto de entrada del programa. Muestra el menú, lee la opción elegida
+     * y ejecuta la operación correspondiente hasta que se elige salir.
+     *
+     * @param args argumentos de la línea de comandos (no se utilizan)
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -64,6 +74,9 @@ public class Main {
         sc.close();
     }
 
+    /**
+     * Muestra por consola el menú con todas las opciones disponibles.
+     */
     private static void mostrarMenu() {
         System.out.println("\n===== MENÚ =====");
         System.out.println("1. Sumar");
@@ -77,6 +90,15 @@ public class Main {
         System.out.println("0. Salir");
     }
 
+    /**
+     * Pide por consola los datos de un estudiante (nombre, edad y tres notas),
+     * lo crea y muestra sus datos, su media y su nota máxima.
+     * <p>
+     * Las notas que no estén entre 0 y 10 se ignoran y se avisa al usuario.
+     * </p>
+     *
+     * @param sc objeto {@link Scanner} usado para leer los datos de la consola
+     */
     private static void gestionarEstudiante(Scanner sc) {
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();
@@ -93,11 +115,27 @@ public class Main {
         System.out.println("Nota máxima: " + e.notaMaxima());
     }
 
+    /**
+     * Muestra un mensaje por consola y lee un número entero escrito por el usuario.
+     *
+     * @param sc      objeto {@link Scanner} usado para leer la entrada
+     * @param mensaje texto que se muestra al usuario antes de leer
+     * @return el número entero introducido
+     * @throws NumberFormatException si lo escrito no es un número entero válido
+     */
     private static int leerEntero(Scanner sc, String mensaje) {
         System.out.print(mensaje);
         return Integer.parseInt(sc.nextLine().trim());
     }
 
+    /**
+     * Muestra un mensaje por consola y lee un número decimal escrito por el usuario.
+     *
+     * @param sc      objeto {@link Scanner} usado para leer la entrada
+     * @param mensaje texto que se muestra al usuario antes de leer
+     * @return el número decimal introducido
+     * @throws NumberFormatException si lo escrito no es un número decimal válido
+     */
     private static double leerDecimal(Scanner sc, String mensaje) {
         System.out.print(mensaje);
         return Double.parseDouble(sc.nextLine().trim());
